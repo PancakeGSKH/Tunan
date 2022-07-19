@@ -1,0 +1,434 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://Tscn/Peng.tscn" type="PackedScene" id=1]
+[ext_resource path="res://photo/Sky.png" type="Texture" id=2]
+[ext_resource path="res://photo/Sea.png" type="Texture" id=3]
+[ext_resource path="res://Tscn/Peng.gd" type="Script" id=4]
+[ext_resource path="res://photo/Cloud.png" type="Texture" id=5]
+[ext_resource path="res://Tscn/Cam.gd" type="Script" id=6]
+[ext_resource path="res://photo/Land.png" type="Texture" id=7]
+[ext_resource path="res://Tscn/Fly.gd" type="Script" id=8]
+[ext_resource path="res://music/妖怪之山.mp3" type="AudioStream" id=9]
+[ext_resource path="res://TTF/方正像素14.TTF" type="DynamicFontData" id=10]
+[ext_resource path="res://Tscn/Fire.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Tscn/Leidian.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Tscn/Stone.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Tscn/Mount.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Tscn/Tree.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Tscn/Zhuangai.gd" type="Script" id=16]
+[ext_resource path="res://Tscn/ZA4.gd" type="Script" id=17]
+[ext_resource path="res://Tscn/ZA5.gd" type="Script" id=18]
+[ext_resource path="res://Tscn/ZA3.gd" type="Script" id=19]
+[ext_resource path="res://Tscn/ZA1.gd" type="Script" id=20]
+[ext_resource path="res://Tscn/ZA2.gd" type="Script" id=21]
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 87, 306.5 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 263.5, 48.5 )
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 48, 28 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 7220, 60.25 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 44.5, 291.5 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 128
+outline_size = 6
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 64
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 48
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 48
+font_data = ExtResource( 10 )
+
+[node name="Fly" type="Node2D"]
+script = ExtResource( 8 )
+
+[node name="Back" type="ParallaxBackground" parent="."]
+
+[node name="Sky" type="ParallaxLayer" parent="Back"]
+position = Vector2( 4702, 400 )
+motion_scale = Vector2( 0.5, 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sky" type="Sprite" parent="Back/Sky"]
+position = Vector2( 0, -58.5 )
+scale = Vector2( 10, 5.61719 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sea" type="Sprite" parent="."]
+position = Vector2( 6458.5, 284 )
+scale = Vector2( 13.2627, 10 )
+texture = ExtResource( 3 )
+
+[node name="Land" type="StaticBody2D" parent="."]
+position = Vector2( 9057, 325 )
+
+[node name="Di" type="CollisionShape2D" parent="Land"]
+position = Vector2( 429, -20 )
+shape = SubResource( 5 )
+
+[node name="Tu" type="Sprite" parent="Land"]
+position = Vector2( -8, 4 )
+scale = Vector2( 32, 32 )
+texture = ExtResource( 7 )
+
+[node name="Jianglou" type="Area2D" parent="Land"]
+position = Vector2( -23, 7 )
+
+[node name="Jianglou" type="CollisionShape2D" parent="Land/Jianglou"]
+position = Vector2( -312.5, 320 )
+shape = SubResource( 6 )
+
+[node name="Cloud" type="Sprite" parent="Land"]
+position = Vector2( 1249.5, 33 )
+scale = Vector2( 64.9583, 20 )
+texture = ExtResource( 5 )
+
+[node name="Peng" type="KinematicBody2D" parent="."]
+position = Vector2( 125, 388 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Peng" parent="Peng" instance=ExtResource( 1 )]
+scale = Vector2( 4, 4 )
+
+[node name="Pengzhuang" type="CollisionShape2D" parent="Peng"]
+position = Vector2( 1, 0 )
+shape = SubResource( 1 )
+
+[node name="Not" type="StaticBody2D" parent="."]
+
+[node name="Not1" type="CollisionShape2D" parent="Not"]
+position = Vector2( 6772, -152 )
+shape = SubResource( 3 )
+
+[node name="Not2" type="CollisionShape2D" parent="Not"]
+position = Vector2( 6865, 1012 )
+shape = SubResource( 3 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -20.0
+autoplay = true
+
+[node name="Zhuangai" type="Node2D" parent="."]
+script = ExtResource( 16 )
+
+[node name="ZA1" type="Node2D" parent="Zhuangai"]
+position = Vector2( 1428, 397 )
+script = ExtResource( 20 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Fire" parent="Zhuangai/ZA1" instance=ExtResource( 11 )]
+visible = false
+position = Vector2( -29, 32 )
+scale = Vector2( 20, 20 )
+
+[node name="Mount" parent="Zhuangai/ZA1" instance=ExtResource( 14 )]
+visible = false
+scale = Vector2( 20, 20 )
+
+[node name="Leidian" parent="Zhuangai/ZA1" instance=ExtResource( 12 )]
+visible = false
+scale = Vector2( 20, 20 )
+
+[node name="Tree" parent="Zhuangai/ZA1" instance=ExtResource( 15 )]
+visible = false
+position = Vector2( -14, 77 )
+scale = Vector2( 13, 13 )
+
+[node name="Stone" parent="Zhuangai/ZA1" instance=ExtResource( 13 )]
+visible = false
+scale = Vector2( 20, 20 )
+
+[node name="Label" type="Label" parent="Zhuangai/ZA1"]
+visible = false
+margin_right = 40.0
+margin_bottom = 14.0
+rect_scale = Vector2( 10, 10 )
+text = "0"
+
+[node name="ZA2" type="Node2D" parent="Zhuangai"]
+position = Vector2( 2854, 403 )
+script = ExtResource( 21 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Fire" parent="Zhuangai/ZA2" instance=ExtResource( 11 )]
+visible = false
+position = Vector2( -29, 32 )
+scale = Vector2( 20, 20 )
+
+[node name="Mount" parent="Zhuangai/ZA2" instance=ExtResource( 14 )]
+visible = false
+scale = Vector2( 20, 20 )
+
+[node name="Leidian" parent="Zhuangai/ZA2" instance=ExtResource( 12 )]
+visible = false
+scale = Vector2( 20, 20 )
+
+[node name="Tree" parent="Zhuangai/ZA2" instance=ExtResource( 15 )]
+visible = false
+position = Vector2( -14, 77 )
+scale = Vector2( 13, 13 )
+
+[node name="Stone" parent="Zhuangai/ZA2" instance=ExtResource( 13 )]
+visible = false
+scale = Vector2( 20, 20 )
+
+[node name="Label" type="Label" parent="Zhuangai/ZA2"]
+visible = false
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="ZA3" type="Node2D" parent="Zhuangai"]
+position = Vector2( 4366, 397 )
+script = ExtResource( 19 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Fire" parent="Zhuangai/ZA3" instance=ExtResource( 11 )]
+visible = false
+position = Vector2( -29, 32 )
+scale = Vector2( 20, 20 )
+
+[node name="Mount" parent="Zhuangai/ZA3" instance=ExtResource( 14 )]
+visible = false
+scale = Vector2( 20, 20 )
+
+[node name="Leidian" parent="Zhuangai/ZA3" instance=ExtResource( 12 )]
+visible = false
+scale = Vector2( 20, 20 )
+
+[node name="Tree" parent="Zhuangai/ZA3" instance=ExtResource( 15 )]
+visible = false
+position = Vector2( -14, 77 )
+scale = Vector2( 13, 13 )
+
+[node name="Stone" parent="Zhuangai/ZA3" instance=ExtResource( 13 )]
+visible = false
+scale = Vector2( 20, 20 )
+
+[node name="Label" type="Label" parent="Zhuangai/ZA3"]
+visible = false
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="ZA4" type="Node2D" parent="Zhuangai"]
+position = Vector2( 5830, 391 )
+script = ExtResource( 17 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Fire" parent="Zhuangai/ZA4" instance=ExtResource( 11 )]
+visible = false
+position = Vector2( -29, 32 )
+scale = Vector2( 20, 20 )
+
+[node name="Mount" parent="Zhuangai/ZA4" instance=ExtResource( 14 )]
+visible = false
+scale = Vector2( 20, 20 )
+
+[node name="Leidian" parent="Zhuangai/ZA4" instance=ExtResource( 12 )]
+visible = false
+scale = Vector2( 20, 20 )
+
+[node name="Tree" parent="Zhuangai/ZA4" instance=ExtResource( 15 )]
+visible = false
+position = Vector2( -14, 77 )
+scale = Vector2( 13, 13 )
+
+[node name="Stone" parent="Zhuangai/ZA4" instance=ExtResource( 13 )]
+visible = false
+scale = Vector2( 20, 20 )
+
+[node name="Label" type="Label" parent="Zhuangai/ZA4"]
+visible = false
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="ZA5" type="Node2D" parent="Zhuangai"]
+position = Vector2( 7486, 406 )
+script = ExtResource( 18 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Fire" parent="Zhuangai/ZA5" instance=ExtResource( 11 )]
+visible = false
+position = Vector2( -29, 32 )
+scale = Vector2( 20, 20 )
+
+[node name="Mount" parent="Zhuangai/ZA5" instance=ExtResource( 14 )]
+visible = false
+scale = Vector2( 20, 20 )
+
+[node name="Leidian" parent="Zhuangai/ZA5" instance=ExtResource( 12 )]
+visible = false
+scale = Vector2( 20, 20 )
+
+[node name="Tree" parent="Zhuangai/ZA5" instance=ExtResource( 15 )]
+visible = false
+position = Vector2( -14, 77 )
+scale = Vector2( 13, 13 )
+
+[node name="Stone" parent="Zhuangai/ZA5" instance=ExtResource( 13 )]
+visible = false
+scale = Vector2( 20, 20 )
+
+[node name="Label" type="Label" parent="Zhuangai/ZA5"]
+visible = false
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="Cam" type="KinematicBody2D" parent="."]
+script = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="Cam"]
+visible = false
+margin_right = 40.0
+margin_bottom = 14.0
+text = "1"
+
+[node name="Cam" type="Camera2D" parent="Cam"]
+position = Vector2( 509, 361 )
+current = true
+
+[node name="Back" type="Area2D" parent="Cam"]
+
+[node name="Wang" type="CollisionShape2D" parent="Cam/Back"]
+position = Vector2( -128.5, 384.5 )
+shape = SubResource( 4 )
+
+[node name="Cloud" type="Sprite" parent="Cam"]
+position = Vector2( -246, 358 )
+scale = Vector2( 20, 20 )
+texture = ExtResource( 5 )
+
+[node name="Wang" type="Label" parent="Cam"]
+visible = false
+margin_left = 398.0
+margin_top = 272.0
+margin_right = 611.0
+margin_bottom = 469.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "亡"
+align = 1
+
+[node name="Defeng" type="Label" parent="Cam"]
+margin_left = 988.0
+margin_top = 6.0
+margin_right = 1028.0
+margin_bottom = 71.0
+custom_fonts/font = SubResource( 8 )
+text = "0"
+
+[node name="Control" type="Control" parent="Cam"]
+
+[node name="Up" type="Button" parent="Cam/Control"]
+margin_left = 940.0
+margin_top = 468.0
+margin_right = 1000.0
+margin_bottom = 523.0
+custom_fonts/font = SubResource( 9 )
+action_mode = 0
+text = "升"
+flat = true
+
+[node name="Down" type="Button" parent="Cam/Control"]
+margin_left = 940.0
+margin_top = 570.0
+margin_right = 1000.0
+margin_bottom = 625.0
+custom_fonts/font = SubResource( 9 )
+text = "降"
+flat = true
+
+[node name="Left" type="Button" parent="Cam/Control"]
+margin_left = 90.0
+margin_top = 530.0
+margin_right = 150.0
+margin_bottom = 585.0
+custom_fonts/font = SubResource( 9 )
+text = "退"
+flat = true
+
+[node name="Right" type="Button" parent="Cam/Control"]
+margin_left = 203.0
+margin_top = 530.0
+margin_right = 263.0
+margin_bottom = 585.0
+custom_fonts/font = SubResource( 9 )
+text = "进"
+flat = true
+
+[node name="Fan" type="Button" parent="Cam"]
+margin_left = 1071.0
+margin_top = 11.0
+margin_right = 1131.0
+margin_bottom = 66.0
+custom_fonts/font = SubResource( 10 )
+text = "反"
+flat = true
+
+[connection signal="body_entered" from="Land/Jianglou" to="." method="_on_Jianglou_body_entered"]
+[connection signal="enter" from="Zhuangai/ZA1" to="Zhuangai" method="_on_ZA1_enter"]
+[connection signal="enter" from="Zhuangai/ZA1/Fire" to="Zhuangai/ZA1" method="_on_Fire_enter"]
+[connection signal="enter" from="Zhuangai/ZA1/Mount" to="Zhuangai/ZA1" method="_on_Mount_enter"]
+[connection signal="enter" from="Zhuangai/ZA1/Leidian" to="Zhuangai/ZA1" method="_on_Leidian_enter"]
+[connection signal="enter" from="Zhuangai/ZA1/Tree" to="Zhuangai/ZA1" method="_on_Tree_enter"]
+[connection signal="enter" from="Zhuangai/ZA1/Stone" to="Zhuangai/ZA1" method="_on_Stone_enter"]
+[connection signal="enter" from="Zhuangai/ZA2" to="Zhuangai" method="_on_ZA2_enter"]
+[connection signal="enter" from="Zhuangai/ZA2/Fire" to="Zhuangai/ZA2" method="_on_Fire_enter"]
+[connection signal="enter" from="Zhuangai/ZA2/Mount" to="Zhuangai/ZA2" method="_on_Mount_enter"]
+[connection signal="enter" from="Zhuangai/ZA2/Leidian" to="Zhuangai/ZA2" method="_on_Leidian_enter"]
+[connection signal="enter" from="Zhuangai/ZA2/Tree" to="Zhuangai/ZA2" method="_on_Tree_enter"]
+[connection signal="enter" from="Zhuangai/ZA2/Stone" to="Zhuangai/ZA2" method="_on_Stone_enter"]
+[connection signal="enter" from="Zhuangai/ZA3" to="Zhuangai" method="_on_ZA3_enter"]
+[connection signal="enter" from="Zhuangai/ZA3/Fire" to="Zhuangai/ZA3" method="_on_Fire_enter"]
+[connection signal="enter" from="Zhuangai/ZA3/Mount" to="Zhuangai/ZA3" method="_on_Mount_enter"]
+[connection signal="enter" from="Zhuangai/ZA3/Leidian" to="Zhuangai/ZA3" method="_on_Leidian_enter"]
+[connection signal="enter" from="Zhuangai/ZA3/Tree" to="Zhuangai/ZA3" method="_on_Tree_enter"]
+[connection signal="enter" from="Zhuangai/ZA3/Stone" to="Zhuangai/ZA3" method="_on_Stone_enter"]
+[connection signal="enter" from="Zhuangai/ZA4" to="Zhuangai" method="_on_ZA4_enter"]
+[connection signal="enter" from="Zhuangai/ZA4/Fire" to="Zhuangai/ZA4" method="_on_Fire_enter"]
+[connection signal="enter" from="Zhuangai/ZA4/Mount" to="Zhuangai/ZA4" method="_on_Mount_enter"]
+[connection signal="enter" from="Zhuangai/ZA4/Leidian" to="Zhuangai/ZA4" method="_on_Leidian_enter"]
+[connection signal="enter" from="Zhuangai/ZA4/Tree" to="Zhuangai/ZA4" method="_on_Tree_enter"]
+[connection signal="enter" from="Zhuangai/ZA4/Stone" to="Zhuangai/ZA4" method="_on_Stone_enter"]
+[connection signal="enter" from="Zhuangai/ZA5" to="Zhuangai" method="_on_ZA5_enter"]
+[connection signal="enter" from="Zhuangai/ZA5/Fire" to="Zhuangai/ZA5" method="_on_Fire_enter"]
+[connection signal="enter" from="Zhuangai/ZA5/Mount" to="Zhuangai/ZA5" method="_on_Mount_enter"]
+[connection signal="enter" from="Zhuangai/ZA5/Leidian" to="Zhuangai/ZA5" method="_on_Leidian_enter"]
+[connection signal="enter" from="Zhuangai/ZA5/Tree" to="Zhuangai/ZA5" method="_on_Tree_enter"]
+[connection signal="enter" from="Zhuangai/ZA5/Stone" to="Zhuangai/ZA5" method="_on_Stone_enter"]
+[connection signal="body_entered" from="Cam/Back" to="Cam" method="_on_Back_body_entered"]

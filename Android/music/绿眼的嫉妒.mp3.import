@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/绿眼的嫉妒.mp3-fbf34bfaf8c30e0ef48c6c7c2d1f7ada.mp3str"
+
+[deps]
+
+source_file="res://music/绿眼的嫉妒.mp3"
+dest_files=[ "res://.import/绿眼的嫉妒.mp3-fbf34bfaf8c30e0ef48c6c7c2d1f7ada.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
